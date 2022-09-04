@@ -3,6 +3,8 @@ from http.client import HTTPException
 
 from django.shortcuts import render
 
+from meetups.forms import RegistrationForm
+
 from .models import Meetup
 
 # Create your views here.
@@ -15,4 +17,5 @@ def index(request):
 
 def meetup_details(request, meetup_slug):
 	selected_meetup = Meetup.objects.get(slug=meetup_slug)
-	return render(request, 'meetups/meetup-details.html', {'selected_meetup':selected_meetup})
+	registration_form = RegistrationForm()
+	return render(request, 'meetups/meetup-details.html', {'selected_meetup':selected_meetup, 'form':registration_form})

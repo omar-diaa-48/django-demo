@@ -5,8 +5,8 @@ from .models import Location, Meetup, Participant
 # Register your models here.
 
 class MeetupAdmin(admin.ModelAdmin):
-	list_display = ('title', 'slug')
-	list_filter = ('title',)
+	list_display = ('title', 'date', 'location')
+	list_filter = ('title', 'date', )
 	prepopulated_fields= {'slug':('title',)}
 
 admin.site.register(Meetup, MeetupAdmin)
